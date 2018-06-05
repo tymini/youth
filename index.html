@@ -142,8 +142,12 @@
     }
 
     function cbPush(resp) {
-        console.log("response of push: " + resp);
-        $("#word").val('')
+        var respString = JSON.stringify(resp);
+        if (respString.search("rejected by user") !== -1) {
+            layer.msg('已取消发送');
+        } else if (respString.search("txhash") !== -1) {
+
+        }
     }
 
     //产生随机数函数
